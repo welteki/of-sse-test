@@ -52,6 +52,10 @@ def ping():
     announcer.announce(msg=msg)
     return {}, 200
 
+@app.route('/_/health')
+def health():
+    return {}, 200
+
 
 @app.route('/listen', methods=['GET'])
 def listen():
