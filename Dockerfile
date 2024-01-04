@@ -6,6 +6,7 @@ ARG BUILDPLATFORM
 WORKDIR /home/app/
 
 COPY app.py .
+COPY listen.py .
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
