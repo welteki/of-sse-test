@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://gw.exit.welteki.dev
+functions:
+  flaks-sse:
+    lang: dockerfile
+    skip_build: true
+    image: docker.io/welteki2/flask-sse:0.1.0
+

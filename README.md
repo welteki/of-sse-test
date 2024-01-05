@@ -1,5 +1,11 @@
 ## OpenFaaS Flask SSE test
 
+Deploy the `flask-sse` function:
+
+```sh
+faas-cli deploy
+```
+
 In the first terminal, create a virtual environment, activate it, and install the necessary requirements.
 
 ```sh
