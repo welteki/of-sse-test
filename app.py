@@ -49,11 +49,11 @@ def format_sse(data: str, event=None) -> str:
 
 @app.route('/ping')
 def ping():
-    for i in range(1, 60):
+    for i in range(1, 500):
         # id = flask.request.args.get('id')
         msg = format_sse(data='pong {}'.format(i))
         announcer.announce(msg=msg)
-        time.sleep(0.2)
+        time.sleep(0.01)
     return {}, 200
 
 @app.route('/_/health')
