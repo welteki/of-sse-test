@@ -1,6 +1,7 @@
 import queue
 
 import flask
+import time
 
 
 app = flask.Flask(__name__)
@@ -48,9 +49,11 @@ def format_sse(data: str, event=None) -> str:
 
 @app.route('/ping')
 def ping():
-    id = flask.request.args.get('id')
-    msg = format_sse(data='pong {}'.format(id))
-    announcer.announce(msg=msg)
+    for i in range(1, 60):
+        # id = flask.request.args.get('id')
+        msg = format_sse(data='pong {}'.format(i))
+        announcer.announce(msg=msg)
+        time.sleep(0.2)
     return {}, 200
 
 @app.route('/_/health')
@@ -65,6 +68,7 @@ def listen():
         messages = announcer.listen()  # returns a queue.Queue
         while True:
             msg = messages.get()  # blocks until a new message arrives
+            print('yield - {}\n'.format(msg), flush=True)
             yield msg
 
     return flask.Response(stream(), mimetype='text/event-stream')
